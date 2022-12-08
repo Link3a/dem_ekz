@@ -38,17 +38,24 @@ def drop_by_arg(val, col_name="номер"):
         return f"Строка со значением {val} поля {col_name} не найдена"
     return f"Строка со значением {val} поля {col_name} удалена!"
 
-# Поиск по пробегу
-def find(val, col_name='пробег'):
+
+# Поиск по номеру
+def find(val, col_name='номер'):
     print(*list(filter(lambda x: x[col_name] == val, csv_file)))
+
 
 # Поиск по модели
-def find(val, col_name='модель'):
+def find1(val, col_name: str = 'модель'):
     print(*list(filter(lambda x: x[col_name] == val, csv_file)))
 
+
 # поиск по году
-def find(val, col_name='год'):
-    print(*list(filter(lambda x: x[col_name] > val, csv_file)))
+def find2(val, col_name='год'):
+    print(*list(filter(lambda x: x[col_name] == val, csv_file)))
+
+def avg_age():
+    print("Средний пробег:",
+        sum([int(row['пробег']) for row in csv_file]) // len(csv_file))
 
 
 # Функция Сохранить
